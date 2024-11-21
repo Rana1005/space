@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet Design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+        }
+
+        .a4 {
+            width: 210mm;
+            height: 297mm;
+            margin: auto;
+            padding: 10mm;
+            box-sizing: border-box;
+            border: 15px solid #8B0000; /* Outer border */
+            position: relative;
+            background: #fff;
+        }
+
+        .inner-border {
+            border: 2px dashed #8B0000; /* Inner border */
+            padding: 10mm;
+            height: calc(100% - 20mm);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header img {
+            height: 60px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #8B0000;
+        }
+
+        .header p {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+        .info {
+            margin-top: 20px;
+        }
+
+        .info table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .info td:first-child {
+            width: 35%;
+            font-weight: bold;
+        }
+
+        .marks-section {
+            margin-top: 20px;
+        }
+
+        .marks-section table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .marks-section th,
+        .marks-section td {
+            border: 1px solid #000;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .totals {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20mm;
+            width: calc(100% - 40mm);
+            text-align: center;
+        }
+
+        .footer .logos {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer .logos img {
+            height: 50px;
+        }
+
+        .footer .sign {
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .footer p {
+            font-size: 12px;
+        }
+
+        #download-btn {
+            margin: 20px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>    
+        async function downloadPDF() {
+    console.log("download button clicked")
+    const { jsPDF } = window.jspdf;
+
+    const element = document.querySelector('.a4');
+    const canvas = await html2canvas(element, { 
+        scale: 2,
+        useCORS: true,  // Enable CORS support
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('marksheet.pdf');
+}
+
+    </script>
+</head>
+<body>
+    <button id="download-btn" onclick="downloadPDF()">Download as PDF</button>
+
+    <div class="a4">
+        <div class="inner-border">
+            <div class="header">
+                <a href="https://ibb.co/vV24N4W"><img src="https://i.ibb.co/mbQ5n5K/logo.jpg" alt="logo" border="0" /></a>
+                <!-- <img src="https://ibb.co/vV24N4W" alt="Logo"> -->
+                <h1>LANIXABYTE by (SPACESATURN)</h1>
+                <p>Incorporated Under Section 8, Ministry of Corporate Affairs & Ministry of Labour, Govt. of India</p>
+                <p>Registered Under the Ordinance of Government of India</p>
+            </div>
+
+            <div class="info">
+                <table>
+                    <tr>
+                        <td>Awarded to :</td>
+                        <td>Ajit Kumar</td>
+                    </tr>
+                    <tr>
+                        <td>Enrollment No. :</td>
+                        <td>21474086</td>
+                    </tr>
+                    <tr>
+                        <td>Certificate No. :</td>
+                        <td>CERT21474086</td>
+                    </tr>
+                    <tr>
+                        <td>Course :</td>
+                        <td>Advance Diploma in Computer Application (ADCA)</td>
+                    </tr>
+                    <tr>
+                        <td>S/O, D/O, H/O, W/O :</td>
+                        <td>Devendra Pandit</td>
+                    </tr>
+                    <tr>
+                        <td>Mother's Name :</td>
+                        <td>Heena Devi</td>
+                    </tr>
+                    <tr>
+                        <td>Centre :</td>
+                        <td>IACT Barh, Patna, Bihar , 803213</td>
+                    </tr>
+                    <tr>
+                        <td>Centre Registration code:</td>
+                        <td>1456</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="marks-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subjects Offered</th>
+                            <th>Full Marks</th>
+                            <th>Marks Obtained</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>COMPUTER FUNDAMENTAL & WINDOWS</td>
+                            <td>100</td>
+                            <td>90</td>
+                        </tr>
+                        <tr>
+                            <td>MS WORD</td>
+                            <td>100</td>
+                            <td>96</td>
+                        </tr>
+                        <tr>
+                            <td>MS EXCEL</td>
+                            <td>100</td>
+                            <td>92</td>
+                        </tr>
+                        <tr>
+                            <td>MS POWERPOINT</td>
+                            <td>100</td>
+                            <td>92</td>
+                        </tr>
+                        <tr>
+                            <td>MS OUTLOOK & INTERNET</td>
+                            <td>100</td>
+                            <td>97</td>
+                        </tr>
+                        <tr>
+                            <td>MS ACCESS</td>
+                            <td>100</td>
+                            <td>92</td>
+                        </tr>
+                        <tr>
+                            <td>MANUAL ACCOUNT & TALLY</td>
+                            <td>100</td>
+                            <td>92</td>
+                        </tr>
+                        <tr>
+                            <td>PAGEMAKER, PHOTOSHOP, CORELDRAW & GSTY</td>
+                            <td>100</td>
+                            <td>92</td>
+                        </tr>
+                        <tr>
+                            <td>MARKETING (SOFT SKILL)</td>
+                            <td>100</td>
+                            <td>92</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="totals">
+                <p id="total-marks"></p>
+                <p id="percentage"></p>
+            </div>
+
+            <div class="footer">
+                <div class="logos">
+                    <a href="https://ibb.co/L0SW34x"><img src="https://i.ibb.co/8mMpHFr/mohar.jpg" alt="mohar" border="0" /></a>
+                    <!-- <img src="https://picsum.photos/536/354" alt="Footer Logo" width="100px", height="100px"> -->
+                </div>
+                <br>Certified and Verified by LANIXABYTE,
+                <br> GSTIN: 12345 <br>CIN: 3456</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
