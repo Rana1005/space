@@ -148,6 +148,31 @@
 }
 
     </script>
+    <script>
+        // Calculate Total Marks and Percentage
+        document.addEventListener("DOMContentLoaded", function () {
+            const marksTable = document.querySelector(".marks-section table tbody").rows;
+    
+            let totalFullMarks = 0;
+            let totalObtainedMarks = 0;
+    
+            for (let row of marksTable) {
+                const fullMarks = parseInt(row.cells[1].innerText); // Full Marks column
+                const obtainedMarks = parseInt(row.cells[2].innerText); // Marks Obtained column
+    
+                totalFullMarks += fullMarks;
+                totalObtainedMarks += obtainedMarks;
+            }
+    
+            // Calculate percentage
+            const percentage = ((totalObtainedMarks / totalFullMarks) * 100).toFixed(2);
+    
+            // Update DOM
+            document.getElementById("total-marks").innerText = `Total Marks: ${totalObtainedMarks} / ${totalFullMarks}`;
+            document.getElementById("percentage").innerText = `Percentage: ${percentage}%`;
+        });
+    </script>
+    
 </head>
 <body>
     <button id="download-btn" onclick="downloadPDF()">Download as PDF</button>
