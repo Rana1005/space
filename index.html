@@ -23,12 +23,29 @@
             background: #fff;
         }
 
+        .a4::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://spacesaturn.in/images/logo.png'); /* Watermark URL */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%; /* Adjust size of the watermark */
+            opacity: 0.3; /* Make watermark subtle */
+            pointer-events: none; /* Ensure it doesn't interfere with clicks */
+            z-index: 0;
+        }
+
         .inner-border {
             border: 2px dashed #8B0000; /* Inner border */
             padding: 10mm;
             height: calc(100% - 20mm);
             box-sizing: border-box;
             position: relative;
+            z-index: 1; /* Ensure content is above the watermark */
         }
 
         .header {
@@ -107,11 +124,6 @@
 
         .footer .logos img {
             height: 50px;
-        }
-
-        .footer .sign {
-            margin-top: 30px;
-            text-align: right;
         }
 
         .footer p {
