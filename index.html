@@ -34,7 +34,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: 70%; /* Adjust size of the watermark */
-            opacity: 0.3; /* Make watermark subtle */
+            opacity: 0.1; /* Make watermark subtle */
             pointer-events: none; /* Ensure it doesn't interfere with clicks */
             z-index: 0;
         }
@@ -110,11 +110,24 @@
         }
 
         .footer {
-            position: absolute;
+            position: relative;
+            /* position: absolute; */
             bottom: 20mm;
-            width: calc(100% - 40mm);
+            /* width: calc(100% - 40mm); */
+            width: 100%;
             text-align: center;
+            box-sizing: border-box;
         }
+        .a4 {
+    display: flex;
+    flex-direction: column; /* Ensure children are stacked vertically */
+}
+
+.inner-border {
+    flex: 1; /* Let the content take up available space */
+    display: flex;
+    flex-direction: column; /* Ensure proper stacking of sections */
+}
 
         .footer .logos {
             display: flex;
@@ -134,6 +147,24 @@
             margin: 20px;
             display: block;
             text-align: center;
+        }
+        .grade-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .grade-item {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+        .grade-item span {
+            display: block;
+            font-weight: normal;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -180,8 +211,11 @@
             const percentage = ((totalObtainedMarks / totalFullMarks) * 100).toFixed(2);
     
             // Update DOM
-            document.getElementById("total-marks").innerText = `Total Marks: ${totalObtainedMarks} / ${totalFullMarks}`;
-            document.getElementById("percentage").innerText = `Percentage: ${percentage}%`;
+            document.getElementById("total-marks").innerHTML = `<strong>Total Marks:</strong> ${totalObtainedMarks} / ${totalFullMarks}`;
+document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> ${percentage}%`;
+
+            // document.getElementById("total-marks").innerText = `Total Marks: ${totalObtainedMarks} / ${totalFullMarks}`;
+            // document.getElementById("percentage").innerText = `Percentage: ${percentage}%`;
         });
     </script>
     
@@ -298,18 +332,43 @@
             <div class="totals">
                 <p id="total-marks"></p>
                 <p id="percentage"></p>
+                <!-- <ul style="list-style-type: none">
+                    <li><strong>Grade A+</strong>: 85% & Above</li>
+                    <li><strong>Grade A</strong>: 75% to 84%</li>
+                    <li><strong>Grade B</strong>: 55% to 70%</li>
+                    <li><strong>Grade C</strong>: 40% to 54%</li>
+                </ul> -->
             </div>
-
+           
             <div class="footer">
                 <div class="logos">
-                    <a href="https://ibb.co/L0SW34x"><img src="https://i.ibb.co/8mMpHFr/mohar.jpg" alt="mohar" border="0" /></a>
-                    <a href="https://ibb.co/QDp7stC"><img src="https://i.ibb.co/J3mWXgy/20241208-165359.jpg" alt="20241208-165359" border="0"></a>
-                    <a href="https://ibb.co/yQ0zMqc"><img src="https://i.ibb.co/fxM3KHz/1200px-ISO-9001-2015-svg.png" alt="1200px-ISO-9001-2015-svg" border="0"></a>
+                    <a href="https://ibb.co/L0SW34x"><img src="https://i.ibb.co/8mMpHFr/mohar.jpg" alt="mohar" border="0" style="margin-right: 10px;"/></a>
+                    <a href="https://ibb.co/QDp7stC"><img src="https://i.ibb.co/J3mWXgy/20241208-165359.jpg" alt="20241208-165359" border="0" style="margin-right: 10px;"></a>
+                    <a href="https://ibb.co/yQ0zMqc"><img src="https://i.ibb.co/fxM3KHz/1200px-ISO-9001-2015-svg.png" alt="1200px-ISO-9001-2015-svg" border="0" style="margin-right: 10px;"></a>
                     <!-- <img src="https://picsum.photos/536/354" alt="Footer Logo" width="100px", height="100px"> -->
                 </div>
-                <br>Certified and Verified by LANIXABYTE,
-                <br> GSTIN: 12345 <br>CIN: 3456</p>
+                <div>
+                    <br>Certified and Verified by LANIXABYTE,
+                    <br> GSTIN: 10AAFCL8772J1ZB <br>CIN: 3456</p>
+                </div>
+                <div class="grade-info">
+                   
+                    <div class="grade-item">
+                        Grade A+ <span>85% & Above</span>
+                    </div>
+                    <div class="grade-item">
+                        Grade A <span>75% to 84%</span>
+                    </div>
+                    <div class="grade-item">
+                        Grade B <span>55% to 70%</span>
+                    </div>
+                    <div class="grade-item">
+                        Grade C <span>40% to 54%</span>
+                    </div>
+                </div>
+
             </div>
+            
         </div>
     </div>
 </body>
