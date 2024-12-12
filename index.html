@@ -241,13 +241,13 @@ document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> 
   var msOutlookInternet = parseFloat(document.getElementById('ms_outlook_internet').value) || 0;
   var msAccess = parseFloat(document.getElementById('ms_access').value) || 0;
   var manualAccountTally = parseFloat(document.getElementById('manual_account_tally').value) || 0;
-  var pagemaker = parseFloat(document.getElementById('pagemaker').value) || 0;
-  var photoshop = parseFloat(document.getElementById('photoshop').value) || 0;
+  // var pagemaker = parseFloat(document.getElementById('pagemaker').value) || 0;
+  // var photoshop = parseFloat(document.getElementById('photoshop').value) || 0;
   var coreldraw = parseFloat(document.getElementById('coreldraw').value) || 0;
   var marketingSoftSkill = parseFloat(document.getElementById('marketing_soft_skill').value) || 0;
   
   // Total Marks and Percentage Calculation
-  var total_marks  = computerFundamentals + msWord + msExcel + msPowerpoint + msOutlookInternet + msAccess + manualAccountTally + pagemaker + photoshop + coreldraw + marketingSoftSkill;
+  var total_marks  = computerFundamentals + msWord + msExcel + msPowerpoint + msOutlookInternet + msAccess + manualAccountTally +  coreldraw + marketingSoftSkill;
   var maxMarks = 900; // Set the total maximum marks
   var percentage = (total_marks / maxMarks) * 100; // Calculate percentage
   percentage = Math.floor(percentage * 100) / 100;
@@ -352,9 +352,9 @@ document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> 
                             <td>${manualAccountTally}</td>
                         </tr>
                         <tr>
-                            <td>PAGEMAKER, PHOTOSHOP, CORELDRAW & GSTY</td>
+                            <td>PAGEMAKER, PHOTOSHOP, CORELDRAW & GST</td>
                             <td>100</td>
-                            <td>${pagemaker}</td>
+                            <td>${coreldraw}</td>
                         </tr>
                         <tr>
                             <td>MARKETING (SOFT SKILL)</td>
@@ -516,21 +516,7 @@ document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> 
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2" for="pagemaker">PAGEMAKER:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="pagemaker" placeholder="Enter status or score" name="pagemaker">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="photoshop">PHOTOSHOP:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="photoshop" placeholder="Enter status or score" name="photoshop">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="coreldraw">CORELDRAW & GSTY:</label>
+      <label class="control-label col-sm-2" for="coreldraw">PAGEMAKER, PHOTOSHOP, CORELDRAW & GST:</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="coreldraw" placeholder="Enter status or score" name="coreldraw">
       </div>
