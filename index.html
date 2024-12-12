@@ -245,7 +245,8 @@ document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> 
   // var photoshop = parseFloat(document.getElementById('photoshop').value) || 0;
   var coreldraw = parseFloat(document.getElementById('coreldraw').value) || 0;
   var marketingSoftSkill = parseFloat(document.getElementById('marketing_soft_skill').value) || 0;
-  
+  var session = document.getElementById('session').value;
+
   // Total Marks and Percentage Calculation
   var total_marks  = computerFundamentals + msWord + msExcel + msPowerpoint + msOutlookInternet + msAccess + manualAccountTally +  coreldraw + marketingSoftSkill;
   var maxMarks = 900; // Set the total maximum marks
@@ -293,6 +294,10 @@ document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> 
                     <tr>
                         <td>Mother's Name :</td>
                         <td>${motherName}</td>
+                    </tr>
+                    <tr>
+                        <td>Sesion :</td>
+                        <td>${session}</td>
                     </tr>
                     <tr>
                         <td>Centre :</td>
@@ -463,6 +468,14 @@ document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> 
         <input type="text" class="form-control" id="mother_name" placeholder="Enter Mother's name" name="mother_name">
       </div>
     </div>
+
+        <!-- Session -->
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="mother_name">Session:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="session" placeholder="Enter session" name="session">
+          </div>
+        </div>
 
     <!-- Courses (Text Fields for each) -->
     <div class="form-group">
