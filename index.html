@@ -306,7 +306,7 @@ document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> 
                     </tr>
                     <tr>
                         <td>Grade :</td>
-                        <td>A+</td>
+                        <td>${percentage>=85 ? 'A+' : (percentage>=75 ? 'A' : (percentage>=55 ? 'B' : 'C'))}</td>
                     </tr>
                 </table>
             </div>
@@ -401,7 +401,7 @@ document.getElementById("percentage").innerHTML = `<strong>Percentage:</strong> 
                         Grade A <span>75% to 84%</span>
                     </div>
                     <div class="grade-item">
-                        Grade B <span>55% to 70%</span>
+                        Grade B <span>55% to 74%</span>
                     </div>
                     <div class="grade-item">
                         Grade C <span>40% to 54%</span>
